@@ -181,6 +181,6 @@ cmake-build-*
 .pydevproject
 .settings
 .classpath
-
+*.log
 #Python
 __pycache__
