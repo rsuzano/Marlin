@@ -500,6 +500,12 @@
   //#define DEFAULT_Ki 2.25
   //#define DEFAULT_Kd 440
 
+  // ANET A8 Standard Extruder at 210 Degree Celsius and 100% Fan
+  //(measured after M106 S255 with M303 E0 S210 C8)
+  #define  DEFAULT_Kp 16.18
+  #define  DEFAULT_Ki 1.18
+  #define  DEFAULT_Kd 55.67
+
 #endif // PIDTEMP
 
 //===========================================================================
@@ -741,11 +747,11 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 400, 400, 8, 50 }
+#define DEFAULT_MAX_FEEDRATE          { 400, 400, 5, 50 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 7, 100 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -758,7 +764,7 @@
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-  #define MAX_ACCEL_EDIT_VALUES       { 6000, 6000, 200, 20000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 4800, 4800, 200, 20000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -769,8 +775,8 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          1200    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  2000    // E acceleration for retracts
+#define DEFAULT_ACCELERATION          1500    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1500    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   2000    // X, Y, Z acceleration for travel (non printing) moves
 //#define DEFAULT_ACCELERATION          600    // X, Y, Z and E acceleration for printing moves
 //#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
@@ -963,14 +969,14 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { -34, 23, -1.20 }
+#define NOZZLE_TO_PROBE_OFFSET { -34, 23, -1.18 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
 #define MIN_PROBE_EDGE 22
 
 // X and Y axis travel speed (mm/m) between probes
-#define XY_PROBE_SPEED 6000
+#define XY_PROBE_SPEED 5100
 
 // Feedrate (mm/m) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1390,7 +1396,7 @@ Versão anterior - Regis
 
 // Homing speeds (mm/m)
 #define HOMING_FEEDRATE_XY (50*60)
-#define HOMING_FEEDRATE_Z  (4*60)
+#define HOMING_FEEDRATE_Z  (2*60)
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
